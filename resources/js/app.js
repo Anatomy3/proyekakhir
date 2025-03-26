@@ -1,7 +1,13 @@
+// resources/js/app.js
 import './bootstrap';
+import { createApp } from 'vue';
 
-import Alpine from 'alpinejs';
+// Import komponen ChatWidget
+import ChatWidget from './components/ChatWidget.vue';
 
-window.Alpine = Alpine;
+// Buat aplikasi Vue dan daftarkan komponen ChatWidget
+const app = createApp({});
+app.component('chat-widget', ChatWidget);
 
-Alpine.start();
+// Mount ke elemen dengan ID app
+app.mount('#app');

@@ -10,6 +10,14 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        
+        <!-- Font Awesome untuk ikon -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        
+        <!-- Data pengguna untuk chat -->
+        @auth
+        <script id="user-data" type="application/json" data-user-id="{{ auth()->id() }}" data-user-name="{{ auth()->user()->name }}" data-user-email="{{ auth()->user()->email }}"></script>
+        @endauth
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -31,6 +39,11 @@
             <main>
                 {{ $slot }}
             </main>
+            
+            <!-- Container Vue untuk Chat Widget -->
+            <div id="app">
+                <chat-widget></chat-widget>
+            </div>
         </div>
     </body>
 </html>
