@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Daiku Interior</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h2>⚙️ ADMIN PANEL</h2>
+            </div>
+            <div class="nav-menu">
+                <a href="admin.html" class="nav-link active">Dashboard</a>
+                <a href="#" class="nav-link">Pemesanan</a>
+                <a href="#" class="nav-link">Produk</a>
+                <a href="#" class="nav-link">Pelanggan</a>
+                <a href="#" class="nav-link">Laporan</a>
+                <a href="index.html" class="nav-link">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="page-header admin-header">
+        <div class="container">
+            <h1>Dashboard Admin</h1>
+            <p>Kelola sistem pemesanan Daiku Interior</p>
+        </div>
+    </section>
+
+    <!-- Stats Cards -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📋</div>
+                    <div class="stat-content">
+                        <h3>25</h3>
+                        <p>Pesanan Baru</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🔄</div>
+                    <div class="stat-content">
+                        <h3>12</h3>
+                        <p>Proyek Aktif</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⏳</div>
+                    <div class="stat-content">
+                        <h3>8</h3>
+                        <p>Pending Payment</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-content">
+                        <h3>485M</h3>
+                        <p>Revenue Bulan Ini</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Orders -->
+    <section class="admin-content">
+        <div class="container">
+            <div class="content-header">
+                <h2>Pesanan Terbaru</h2>
+                <button class="btn btn-primary">Tambah Pesanan</button>
+            </div>
+            
+            <div class="table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Product</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Tanggal</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#DK001</td>
+                            <td>John Doe</td>
+                            <td>Ruang Tamu Modern</td>
+                            <td>Rp 15.000.000</td>
+                            <td><span class="status-badge status-progress">In Progress</span></td>
+                            <td>15 Jan 2025</td>
+                            <td>
+                                <button class="btn btn-small btn-primary">Update</button>
+                                <button class="btn btn-small btn-outline">View</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#DK002</td>
+                            <td>Jane Smith</td>
+                            <td>Kamar Tidur Minimalis</td>
+                            <td>Rp 12.000.000</td>
+                            <td><span class="status-badge status-pending">Pending</span></td>
+                            <td>20 Jan 2025</td>
+                            <td>
+                                <button class="btn btn-small btn-primary">Process</button>
+                                <button class="btn btn-small btn-outline">View</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#DK003</td>
+                            <td>Bob Wilson</td>
+                            <td>Kitchen Set Modern</td>
+                            <td>Rp 18.000.000</td>
+                            <td><span class="status-badge status-completed">Completed</span></td>
+                            <td>10 Jan 2025</td>
+                            <td>
+                                <button class="btn btn-small btn-outline">View</button>
+                                <button class="btn btn-small btn-outline">Invoice</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#DK004</td>
+                            <td>Sarah Johnson</td>
+                            <td>Renovasi Total</td>
+                            <td>Rp 45.000.000</td>
+                            <td><span class="status-badge status-progress">In Progress</span></td>
+                            <td>22 Jan 2025</td>
+                            <td>
+                                <button class="btn btn-small btn-primary">Update</button>
+                                <button class="btn btn-small btn-outline">View</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#DK005</td>
+                            <td>Michael Brown</td>
+                            <td>Exterior Rumah</td>
+                            <td>Rp 30.000.000</td>
+                            <td><span class="status-badge status-pending">Pending</span></td>
+                            <td>25 Jan 2025</td>
+                            <td>
+                                <button class="btn btn-small btn-primary">Process</button>
+                                <button class="btn btn-small btn-outline">View</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Daiku Interior Admin Panel. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Desain - Daiku Interior</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h2>🏠 DAIKU INTERIOR</h2>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Beranda</a>
+                <a href="katalog.html" class="nav-link active">Katalog</a>
+                <a href="pemesanan.html" class="nav-link">Pemesanan</a>
+                <a href="status.html" class="nav-link">Status Proyek</a>
+                <a href="chat.html" class="nav-link">Chat</a>
+                <a href="admin.html" class="nav-link">Admin</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Katalog Desain Interior</h1>
+            <p>Pilih desain terbaik untuk rumah impian Anda</p>
+        </div>
+    </section>
+
+    <!-- Filter -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterProducts('all')">Semua</button>
+                <button class="filter-btn" onclick="filterProducts('ruang-tamu')">Ruang Tamu</button>
+                <button class="filter-btn" onclick="filterProducts('kamar-tidur')">Kamar Tidur</button>
+                <button class="filter-btn" onclick="filterProducts('dapur')">Dapur</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="products-section">
+        <div class="container">
+            <div class="product-grid">
+                <div class="product-card" data-category="ruang-tamu">
+                    <div class="product-image">Interior Modern</div>
+                    <h3>Ruang Tamu Modern</h3>
+                    <p>Desain minimalis untuk ruang tamu yang elegan</p>
+                    <p class="price">Rp 15.000.000</p>
+                    <a href="pemesanan.html" class="btn btn-primary">Pesan</a>
+                </div>
+                <div class="product-card" data-category="kamar-tidur">
+                    <div class="product-image">Kamar Minimalis</div>
+                    <h3>Kamar Tidur Minimalis</h3>
+                    <p>Kamar tidur dengan konsep clean dan nyaman</p>
+                    <p class="price">Rp 12.000.000</p>
+                    <a href="pemesanan.html" class="btn btn-primary">Pesan</a>
+                </div>
+                <div class="product-card" data-category="dapur">
+                    <div class="product-image">Kitchen Modern</div>
+                    <h3>Dapur Modern</h3>
+                    <p>Kitchen set dengan penataan efisien</p>
+                    <p class="price">Rp 18.000.000</p>
+                    <a href="pemesanan.html" class="btn btn-primary">Pesan</a>
+                </div>
+                <div class="product-card" data-category="ruang-tamu">
+                    <div class="product-image">Living Room</div>
+                    <h3>Ruang Tamu Klasik</h3>
+                    <p>Desain klasik dengan sentuhan modern</p>
+                    <p class="price">Rp 20.000.000</p>
+                    <a href="pemesanan.html" class="btn btn-primary">Pesan</a>
+                </div>
+                <div class="product-card" data-category="kamar-tidur">
+                    <div class="product-image">Master Bedroom</div>
+                    <h3>Master Bedroom</h3>
+                    <p>Kamar utama dengan walk-in closet</p>
+                    <p class="price">Rp 25.000.000</p>
+                    <a href="pemesanan.html" class="btn btn-primary">Pesan</a>
+                </div>
+                <div class="product-card" data-category="dapur">
+                    <div class="product-image">Kitchen Island</div>
+                    <h3>Kitchen Island</h3>
+                    <p>Dapur dengan kitchen island modern</p>
+                    <p class="price">Rp 22.000.000</p>
+                    <a href="pemesanan.html" class="btn btn-primary">Pesan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Daiku Interior. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
