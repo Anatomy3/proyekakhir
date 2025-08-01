@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Form pemesanan dan konsultasi gratis desain interior Daiku Interior - Dapatkan penawaran terbaik untuk proyek interior Anda.">
+    <title>Form Pemesanan - Daiku Interior Pekanbaru</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-light">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <a href="index.html" class="navbar-brand">
+                    <img src="images/image.png" alt="Daiku Interior & Eksterior" height="24">
+                </a>
+                
+                <ul class="navbar-nav d-lg-flex">
+                    <li><a href="index.html" class="nav-link">Beranda</a></li>
+                    <li><a href="catalog.html" class="nav-link">Katalog</a></li>
+                    <li><a href="rfq-form.html" class="nav-link active">Konsultasi</a></li>
+                    <li><a href="#" class="nav-link login-required" style="display: none;" onclick="DaikuApp.goToDashboard(); return false;">Pesanan Saya</a></li>
+                    <li class="guest-only"><a href="auth.html" class="nav-link">Login</a></li>
+                    <li class="login-required dropdown" style="display: none;">
+                        <a href="#" class="nav-link dropdown-toggle user-profile">
+                            <img src="" alt="Profile" class="rounded-circle me-2" width="24" height="24">
+                            <span class="user-name"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="customer-only"><a href="#" class="dropdown-item" onclick="DaikuApp.goToDashboard(); return false;">Dashboard</a></li>
+                            <li class="admin-only" style="display: none;"><a href="admin-dashboard.html" class="dropdown-item">Admin Panel</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a href="#" class="dropdown-item" onclick="DaikuApp.logout()">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <button class="mobile-menu-toggle d-lg-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- RFQ Form Container -->
+    <div class="rfq-container py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <!-- Header -->
+                    <div class="text-center mb-5">
+                        <h1 class="h2 mb-3">Form Konsultasi & Pemesanan</h1>
+                        <p class="lead text-muted">
+                            Ceritakan proyek interior impian Anda dan dapatkan konsultasi gratis dari tim ahli kami
+                        </p>
+                    </div>
+
+                    <!-- Progress Steps -->
+                    <div class="progress-steps mb-5">
+                        <div class="row">
+                            <div class="col-6 col-md-3">
+                                <div class="step-item active" data-step="1">
+                                    <div class="step-icon">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="step-label">Info Personal</div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="step-item" data-step="2">
+                                    <div class="step-icon">
+                                        <i class="fas fa-home"></i>
+                                    </div>
+                                    <div class="step-label">Detail Proyek</div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="step-item" data-step="3">
+                                    <div class="step-icon">
+                                        <i class="fas fa-money-bill-wave"></i>
+                                    </div>
+                                    <div class="step-label">Budget & File</div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="step-item" data-step="4">
+                                    <div class="step-icon">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="step-label">Review & Kirim</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Content -->
+                    <div class="card shadow-lg">
+                        <div class="card-body p-4 p-md-5">
+                            <form id="rfqForm" class="multi-step-form">
+                                <!-- Step 1: Personal Information -->
+                                <div class="form-step active" id="step1">
+                                    <h4 class="mb-4">
+                                        <i class="fas fa-user me-2 text-primary"></i>
+                                        Informasi Personal
+                                    </h4>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">Nama Lengkap *</label>
+                                                <input type="text" class="form-control" name="fullName" 
+                                                       placeholder="Masukkan nama lengkap" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">Email *</label>
+                                                <input type="email" class="form-control" name="email" 
+                                                       placeholder="name@example.com" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">Nomor Telepon *</label>
+                                                <input type="tel" class="form-control" name="phone" 
+                                                       placeholder="08123456789" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">Kota</label>
+                                                <select class="form-select" name="city">
+                                                    <option value="">Pilih kota...</option>
+                                                    <option value="Pekanbaru">Pekanbaru</option>
+                                                    <option value="Jakarta">Jakarta</option>
+                                                    <option value="Bandung">Bandung</option>
+                                                    <option value="Surabaya">Surabaya</option>
+                                                    <option value="Medan">Medan</option>
+                                                    <option value="Other">Lainnya</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Alamat Lengkap</label>
+                                        <textarea class="form-control" name="address" rows="3" 
+                                                  placeholder="Masukkan alamat lengkap proyek"></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Bagaimana Anda mengetahui Daiku Interior?</label>
+                                        <select class="form-select" name="referralSource">
+                                            <option value="">Pilih...</option>
+                                            <option value="Google Search">Google Search</option>
+                                            <option value="Social Media">Social Media</option>
+                                            <option value="Referral">Referral dari teman/keluarga</option>
+                                            <option value="Advertisement">Iklan</option>
+                                            <option value="Website">Website</option>
+                                            <option value="Other">Lainnya</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Step 2: Project Details -->
+                                <div class="form-step" id="step2">
+                                    <h4 class="mb-4">
+                                        <i class="fas fa-home me-2 text-primary"></i>
+                                        Detail Proyek
+                                    </h4>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Jenis Proyek *</label>
+                                        <div class="row">
+                                            <div class="col-md-6 col-lg-4 mb-3">
+                                                <div class="form-check project-type-card">
+                                                    <input class="form-check-input" type="radio" name="projectType" 
+                                                           value="residential" id="residential">
+                                                    <label class="form-check-label" for="residential">
+                                                        <div class="card h-100 text-center">
+                                                            <div class="card-body">
+                                                                <i class="fas fa-home fa-2x mb-2 text-primary"></i>
+                                                                <h6>Residensial</h6>
+                                                                <small class="text-muted">Rumah, apartemen, dll</small>
+                                                            </div>
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-4 mb-3">
+                                                <div class="form-check project-type-card">
+                                                    <input class="form-check-input" type="radio" name="projectType" 
+                                                           value="commercial" id="commercial">
+                                                    <label class="form-check-label" for="commercial">
+                                                        <div class="card h-100 text-center">
+                                                            <div class="card-body">
+                                                                <i class="fas fa-building fa-2x mb-2 text-primary"></i>
+                                                                <h6>Komersial</h6>
+                                                                <small class="text-muted">Kantor, toko, restaurant</small>
+                                                            </div>
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-4 mb-3">
+                                                <div class="form-check project-type-card">
+                                                    <input class="form-check-input" type="radio" name="projectType" 
+                                                           value="renovation" id="renovation">
+                                                    <label class="form-check-label" for="renovation">
+                                                        <div class="card h-100 text-center">
+                                                            <div class="card-body">
+                                                                <i class="fas fa-tools fa-2x mb-2 text-primary"></i>
+                                                                <h6>Renovasi</h6>
+                                                                <small class="text-muted">Upgrade interior existing</small>
+                                                            </div>
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">Ruang yang ingin didesain *</label>
+                                                <div class="form-check-group">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="rooms[]" 
+                                                               value="living_room" id="living_room">
+                                                        <label class="form-check-label" for="living_room">
+                                                            Ruang Tamu
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="rooms[]" 
+                                                               value="bedroom" id="bedroom">
+                                                        <label class="form-check-label" for="bedroom">
+                                                            Kamar Tidur
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="rooms[]" 
+                                                               value="kitchen" id="kitchen">
+                                                        <label class="form-check-label" for="kitchen">
+                                                            Dapur
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="rooms[]" 
+                                                               value="bathroom" id="bathroom">
+                                                        <label class="form-check-label" for="bathroom">
+                                                            Kamar Mandi
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="rooms[]" 
+                                                               value="dining_room" id="dining_room">
+                                                        <label class="form-check-label" for="dining_room">
+                                                            Ruang Makan
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="rooms[]" 
+                                                               value="office" id="office">
+                                                        <label class="form-check-label" for="office">
+                                                            Ruang Kerja
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">Gaya Desain Preferensi</label>
+                                                <select class="form-select" name="designStyle">
+                                                    <option value="">Pilih gaya...</option>
+                                                    <option value="Modern">Modern</option>
+                                                    <option value="Minimalis">Minimalis</option>
+                                                    <option value="Contemporary">Contemporary</option>
+                                                    <option value="Scandinavian">Scandinavian</option>
+                                                    <option value="Industrial">Industrial</option>
+                                                    <option value="Classic">Classic</option>
+                                                    <option value="Traditional">Traditional</option>
+                                                    <option value="Tropical">Tropical</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="form-label">Luas Area (m²)</label>
+                                                <input type="number" class="form-control" name="area" 
+                                                       placeholder="Contoh: 50" min="1">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="form-label">Target Completion</label>
+                                                <select class="form-select" name="timeline">
+                                                    <option value="">Pilih timeline...</option>
+                                                    <option value="urgent">Segera (1-2 bulan)</option>
+                                                    <option value="normal">Normal (2-4 bulan)</option>
+                                                    <option value="flexible">Fleksibel (4+ bulan)</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Deskripsi Proyek & Kebutuhan Khusus</label>
+                                        <textarea class="form-control" name="projectDescription" rows="4" 
+                                                  placeholder="Ceritakan detail proyek Anda, kebutuhan khusus, preferensi warna, furniture yang sudah ada, dll."></textarea>
+                                    </div>
+                                </div>
+
+                                <!-- Step 3: Budget & Files -->
+                                <div class="form-step" id="step3">
+                                    <h4 class="mb-4">
+                                        <i class="fas fa-money-bill-wave me-2 text-primary"></i>
+                                        Budget & File Pendukung
+                                    </h4>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">Estimasi Budget *</label>
+                                                <select class="form-select" name="budget" required>
+                                                    <option value="">Pilih range budget...</option>
+                                                    <option value="0-25">< Rp 25 Juta</option>
+                                                    <option value="25-50">Rp 25 - 50 Juta</option>
+                                                    <option value="50-100">Rp 50 - 100 Juta</option>
+                                                    <option value="100-200">Rp 100 - 200 Juta</option>
+                                                    <option value="200+">Rp 200 Juta+</option>
+                                                    <option value="discuss">Akan diskusikan nanti</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="form-label">Prioritas Budget</label>
+                                                <div class="form-check-group">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="budgetPriority" 
+                                                               value="quality" id="quality">
+                                                        <label class="form-check-label" for="quality">
+                                                            Kualitas material premium
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="budgetPriority" 
+                                                               value="balance" id="balance">
+                                                        <label class="form-check-label" for="balance">
+                                                            Balance kualitas & harga
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="budgetPriority" 
+                                                               value="cost" id="cost">
+                                                        <label class="form-check-label" for="cost">
+                                                            Efisiensi biaya
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">Sistem Pembayaran</label>
+                                                <select class="form-select" name="paymentPlan">
+                                                    <option value="">Pilih sistem pembayaran...</option>
+                                                    <option value="full">Lunas di awal</option>
+                                                    <option value="installment_2">Cicilan 2x (50%-50%)</option>
+                                                    <option value="installment_3">Cicilan 3x (40%-30%-30%)</option>
+                                                    <option value="progress">Bertahap sesuai progress</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="form-label">Waktu konsultasi yang diinginkan</label>
+                                                <select class="form-select" name="consultationTime">
+                                                    <option value="">Kapan konsultasi...</option>
+                                                    <option value="asap">Sesegera mungkin</option>
+                                                    <option value="this_week">Minggu ini</option>
+                                                    <option value="next_week">Minggu depan</option>
+                                                    <option value="flexible">Fleksibel</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- File Upload Section -->
+                                    <div class="form-group">
+                                        <label class="form-label">Upload File Pendukung</label>
+                                        <div class="file-upload">
+                                            <input type="file" class="file-upload-input" id="fileUpload" 
+                                                   name="files[]" multiple accept="image/*,.pdf,.dwg,.jpg,.png">
+                                            <label for="fileUpload" class="file-upload-label">
+                                                <div class="file-upload-icon">
+                                                    <i class="fas fa-cloud-upload-alt"></i>
+                                                </div>
+                                                <div class="file-upload-text">
+                                                    <strong>Click to upload</strong> or drag and drop<br>
+                                                    <small class="text-muted">
+                                                        Foto existing ruangan, denah, inspirasi desain<br>
+                                                        JPG, PNG, PDF, DWG (Max 5MB per file)
+                                                    </small>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div id="uploadedFiles" class="uploaded-files mt-3"></div>
+                                    </div>
+
+                                    <div class="alert alert-info">
+                                        <i class="fas fa-info-circle me-2"></i>
+                                        <strong>Tips:</strong> Upload foto ruangan yang akan didesain, denah lantai, 
+                                        atau contoh desain yang Anda sukai untuk konsultasi yang lebih tepat sasaran.
+                                    </div>
+                                </div>
+
+                                <!-- Step 4: Review & Submit -->
+                                <div class="form-step" id="step4">
+                                    <h4 class="mb-4">
+                                        <i class="fas fa-check me-2 text-primary"></i>
+                                        Review & Konfirmasi
+                                    </h4>
+
+                                    <div id="reviewContent">
+                                        <!-- Review content will be populated by JavaScript -->
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+                                            <label class="form-check-label" for="agreeTerms">
+                                                Saya setuju dengan 
+                                                <a href="#" class="text-decoration-none">Syarat & Ketentuan</a> 
+                                                dan 
+                                                <a href="#" class="text-decoration-none">Kebijakan Privasi</a> 
+                                                Daiku Interior
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="newsletter">
+                                            <label class="form-check-label" for="newsletter">
+                                                Ya, saya ingin menerima newsletter dan update terbaru dari Daiku Interior
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="alert alert-success">
+                                        <i class="fas fa-check-circle me-2"></i>
+                                        <strong>Langkah Selanjutnya:</strong><br>
+                                        1. Tim kami akan menghubungi Anda dalam 24 jam<br>
+                                        2. Konsultasi gratis via WhatsApp atau meeting<br>
+                                        3. Proposal detail dan penawaran harga<br>
+                                        4. Mulai eksekusi proyek setelah deal
+                                    </div>
+                                </div>
+
+                                <!-- Form Navigation -->
+                                <div class="form-navigation mt-4 pt-4 border-top">
+                                    <div class="d-flex justify-content-between">
+                                        <button type="button" class="btn btn-outline-secondary" id="prevBtn" 
+                                                onclick="rfqManager.previousStep()" style="display: none;">
+                                            <i class="fas fa-chevron-left me-2"></i>Sebelumnya
+                                        </button>
+                                        <div class="ms-auto d-flex gap-2">
+                                            <button type="button" class="btn btn-secondary" id="saveBtn" 
+                                                    onclick="rfqManager.saveDraft()">
+                                                <i class="fas fa-save me-2"></i>Simpan Draft
+                                            </button>
+                                            <button type="button" class="btn btn-primary" id="nextBtn" 
+                                                    onclick="rfqManager.nextStep()">
+                                                Selanjutnya <i class="fas fa-chevron-right ms-2"></i>
+                                            </button>
+                                            <button type="submit" class="btn btn-accent" id="submitBtn" 
+                                                    style="display: none;">
+                                                <i class="fas fa-paper-plane me-2"></i>Kirim Permintaan
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5 class="mb-3">
+                        <i class="fas fa-home me-2"></i>Daiku Interior
+                    </h5>
+                    <p class="text-muted">
+                        Jasa desain interior profesional di Pekanbaru. 
+                        Menghadirkan solusi desain terbaik untuk hunian dan bisnis Anda.
+                    </p>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="mb-3">Menu</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-muted">Beranda</a></li>
+                        <li><a href="catalog.html" class="text-muted">Katalog</a></li>
+                        <li><a href="index.html#services" class="text-muted">Layanan</a></li>
+                        <li><a href="index.html#testimonials" class="text-muted">Testimoni</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h6 class="mb-3">Kontak</h6>
+                    <div class="contact-info">
+                        <div class="mb-2">
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            Jl. Sudirman No. 123, Pekanbaru, Riau
+                        </div>
+                        <div class="mb-2">
+                            <i class="fas fa-phone me-2"></i>
+                            <a href="tel:+6281234567890" class="text-muted">+62 812-3456-7890</a>
+                        </div>
+                        <div class="mb-2">
+                            <i class="fas fa-envelope me-2"></i>
+                            <a href="mailto:info@daikuinterior.com" class="text-muted">info@daikuinterior.com</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h6 class="mb-3">Ikuti Kami</h6>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="text-center">
+                <p class="mb-0 text-muted">
+                    &copy; 2024 Daiku Interior Pekanbaru. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        class RFQManager {
+            constructor() {
+                this.currentStep = 1;
+                this.totalSteps = 4;
+                this.formData = {};
+                this.uploadedFiles = [];
+            }
+
+            init() {
+                this.loadDraft();
+                this.bindEvents();
+                this.updateStepDisplay();
+                
+                // Check if design ID is provided in URL
+                const urlParams = new URLSearchParams(window.location.search);
+                const designId = urlParams.get('design');
+                if (designId) {
+                    this.preSelectDesign(designId);
+                }
+            }
+
+            bindEvents() {
+                // Form submission
+                document.getElementById('rfqForm').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.submitForm();
+                });
+
+                // File upload
+                document.getElementById('fileUpload').addEventListener('change', (e) => {
+                    this.handleFileUpload(e.target.files);
+                });
+
+                // Auto-save form data
+                document.getElementById('rfqForm').addEventListener('input', 
+                    Utils.debounce(() => this.autoSave(), 1000)
+                );
+
+                // Drag and drop
+                const uploadLabel = document.querySelector('.file-upload-label');
+                uploadLabel.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    uploadLabel.classList.add('drag-over');
+                });
+
+                uploadLabel.addEventListener('dragleave', () => {
+                    uploadLabel.classList.remove('drag-over');
+                });
+
+                uploadLabel.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    uploadLabel.classList.remove('drag-over');
+                    this.handleFileUpload(e.dataTransfer.files);
+                });
+            }
+
+            nextStep() {
+                if (this.validateCurrentStep()) {
+                    if (this.currentStep < this.totalSteps) {
+                        this.currentStep++;
+                        this.updateStepDisplay();
+                        this.scrollToTop();
+                        
+                        if (this.currentStep === 4) {
+                            this.generateReview();
+                        }
+                    }
+                }
+            }
+
+            previousStep() {
+                if (this.currentStep > 1) {
+                    this.currentStep--;
+                    this.updateStepDisplay();
+                    this.scrollToTop();
+                }
+            }
+
+            updateStepDisplay() {
+                // Update progress steps
+                document.querySelectorAll('.step-item').forEach((step, index) => {
+                    step.classList.toggle('active', index + 1 <= this.currentStep);
+                    step.classList.toggle('completed', index + 1 < this.currentStep);
+                });
+
+                // Show/hide form steps
+                document.querySelectorAll('.form-step').forEach((step, index) => {
+                    step.classList.toggle('active', index + 1 === this.currentStep);
+                });
+
+                // Update navigation buttons
+                const prevBtn = document.getElementById('prevBtn');
+                const nextBtn = document.getElementById('nextBtn');
+                const submitBtn = document.getElementById('submitBtn');
+
+                prevBtn.style.display = this.currentStep > 1 ? 'block' : 'none';
+                nextBtn.style.display = this.currentStep < this.totalSteps ? 'block' : 'none';
+                submitBtn.style.display = this.currentStep === this.totalSteps ? 'block' : 'none';
+
+                // Update next button text
+                if (this.currentStep === this.totalSteps - 1) {
+                    nextBtn.innerHTML = 'Review <i class="fas fa-chevron-right ms-2"></i>';
+                } else {
+                    nextBtn.innerHTML = 'Selanjutnya <i class="fas fa-chevron-right ms-2"></i>';
+                }
+            }
+
+            validateCurrentStep() {
+                const currentStepElement = document.getElementById(`step${this.currentStep}`);
+                const requiredFields = currentStepElement.querySelectorAll('[required]');
+                let isValid = true;
+
+                requiredFields.forEach(field => {
+                    if (!this.validateField(field)) {
+                        isValid = false;
+                    }
+                });
+
+                // Custom validation for step 2 (rooms checkbox)
+                if (this.currentStep === 2) {
+                    const roomCheckboxes = currentStepElement.querySelectorAll('input[name="rooms[]"]:checked');
+                    if (roomCheckboxes.length === 0) {
+                        DaikuApp.showToast('Error', 'Pilih minimal satu ruang yang ingin didesain', 'danger');
+                        isValid = false;
+                    }
+                }
+
+                return isValid;
+            }
+
+            validateField(field) {
+                const value = field.value.trim();
+                let isValid = true;
+
+                // Clear previous error
+                field.classList.remove('is-invalid');
+                const existingError = field.parentNode.querySelector('.invalid-feedback');
+                if (existingError) existingError.remove();
+
+                // Required field validation
+                if (field.required && !value) {
+                    this.showFieldError(field, 'Field ini wajib diisi');
+                    isValid = false;
+                }
+
+                // Email validation
+                if (field.type === 'email' && value && !DaikuApp.validateEmail(value)) {
+                    this.showFieldError(field, 'Format email tidak valid');
+                    isValid = false;
+                }
+
+                // Phone validation
+                if (field.name === 'phone' && value && !DaikuApp.validatePhone(value)) {
+                    this.showFieldError(field, 'Nomor telepon tidak valid');
+                    isValid = false;
+                }
+
+                return isValid;
+            }
+
+            showFieldError(field, message) {
+                field.classList.add('is-invalid');
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'invalid-feedback';
+                errorDiv.textContent = message;
+                field.parentNode.appendChild(errorDiv);
+            }
+
+            handleFileUpload(files) {
+                Array.from(files).forEach(file => {
+                    if (file.size > 5 * 1024 * 1024) { // 5MB limit
+                        DaikuApp.showToast('Error', `File ${file.name} terlalu besar (max 5MB)`, 'danger');
+                        return;
+                    }
+
+                    const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf', 'image/dwg'];
+                    if (!allowedTypes.includes(file.type) && !file.name.toLowerCase().endsWith('.dwg')) {
+                        DaikuApp.showToast('Error', `File ${file.name} tidak didukung`, 'danger');
+                        return;
+                    }
+
+                    this.uploadedFiles.push(file);
+                    this.displayUploadedFile(file);
+                });
+            }
+
+            displayUploadedFile(file) {
+                const container = document.getElementById('uploadedFiles');
+                const fileElement = document.createElement('div');
+                fileElement.className = 'uploaded-file-item d-flex align-items-center justify-content-between p-2 border rounded mb-2';
+                
+                fileElement.innerHTML = `
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-file me-2 text-primary"></i>
+                        <div>
+                            <div class="file-name">${file.name}</div>
+                            <small class="text-muted">${this.formatFileSize(file.size)}</small>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-outline-danger" onclick="rfqManager.removeFile('${file.name}')">
+                        <i class="fas fa-times"></i>
+                    </button>
+                `;
+
+                container.appendChild(fileElement);
+            }
+
+            removeFile(fileName) {
+                this.uploadedFiles = this.uploadedFiles.filter(file => file.name !== fileName);
+                
+                const fileItems = document.querySelectorAll('.uploaded-file-item');
+                fileItems.forEach(item => {
+                    if (item.querySelector('.file-name').textContent === fileName) {
+                        item.remove();
+                    }
+                });
+            }
+
+            formatFileSize(bytes) {
+                if (bytes === 0) return '0 Bytes';
+                const k = 1024;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            }
+
+            generateReview() {
+                const formData = new FormData(document.getElementById('rfqForm'));
+                const data = Object.fromEntries(formData);
+                
+                // Get selected rooms
+                const selectedRooms = Array.from(document.querySelectorAll('input[name="rooms[]"]:checked'))
+                    .map(cb => cb.nextElementSibling.textContent.trim());
+
+                const reviewContent = document.getElementById('reviewContent');
+                reviewContent.innerHTML = `
+                    <div class="review-section">
+                        <h5><i class="fas fa-user me-2"></i>Informasi Personal</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Nama:</strong> ${data.fullName || '-'}</p>
+                                <p><strong>Email:</strong> ${data.email || '-'}</p>
+                                <p><strong>Telepon:</strong> ${data.phone || '-'}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Kota:</strong> ${data.city || '-'}</p>
+                                <p><strong>Sumber Info:</strong> ${data.referralSource || '-'}</p>
+                            </div>
+                        </div>
+                        ${data.address ? `<p><strong>Alamat:</strong> ${data.address}</p>` : ''}
+                    </div>
+
+                    <div class="review-section">
+                        <h5><i class="fas fa-home me-2"></i>Detail Proyek</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Jenis Proyek:</strong> ${this.formatProjectType(data.projectType)}</p>
+                                <p><strong>Ruang:</strong> ${selectedRooms.join(', ')}</p>
+                                <p><strong>Gaya Desain:</strong> ${data.designStyle || 'Belum ditentukan'}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Luas Area:</strong> ${data.area ? data.area + ' m²' : 'Belum ditentukan'}</p>
+                                <p><strong>Timeline:</strong> ${this.formatTimeline(data.timeline)}</p>
+                            </div>
+                        </div>
+                        ${data.projectDescription ? `<p><strong>Deskripsi:</strong> ${data.projectDescription}</p>` : ''}
+                    </div>
+
+                    <div class="review-section">
+                        <h5><i class="fas fa-money-bill-wave me-2"></i>Budget & Pembayaran</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Budget:</strong> ${this.formatBudget(data.budget)}</p>
+                                <p><strong>Prioritas:</strong> ${this.formatBudgetPriority(data.budgetPriority)}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Sistem Pembayaran:</strong> ${this.formatPaymentPlan(data.paymentPlan)}</p>
+                                <p><strong>Waktu Konsultasi:</strong> ${this.formatConsultationTime(data.consultationTime)}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    ${this.uploadedFiles.length > 0 ? `
+                        <div class="review-section">
+                            <h5><i class="fas fa-paperclip me-2"></i>File Lampiran</h5>
+                            <p>${this.uploadedFiles.length} file telah diupload: ${this.uploadedFiles.map(f => f.name).join(', ')}</p>
+                        </div>
+                    ` : ''}
+                `;
+            }
+
+            formatProjectType(type) {
+                const types = {
+                    'residential': 'Residensial',
+                    'commercial': 'Komersial',
+                    'renovation': 'Renovasi'
+                };
+                return types[type] || 'Belum dipilih';
+            }
+
+            formatTimeline(timeline) {
+                const timelines = {
+                    'urgent': 'Segera (1-2 bulan)',
+                    'normal': 'Normal (2-4 bulan)',
+                    'flexible': 'Fleksibel (4+ bulan)'
+                };
+                return timelines[timeline] || 'Belum ditentukan';
+            }
+
+            formatBudget(budget) {
+                const budgets = {
+                    '0-25': '< Rp 25 Juta',
+                    '25-50': 'Rp 25 - 50 Juta',
+                    '50-100': 'Rp 50 - 100 Juta',
+                    '100-200': 'Rp 100 - 200 Juta',
+                    '200+': 'Rp 200 Juta+',
+                    'discuss': 'Akan diskusikan nanti'
+                };
+                return budgets[budget] || 'Belum ditentukan';
+            }
+
+            formatBudgetPriority(priority) {
+                const priorities = {
+                    'quality': 'Kualitas material premium',
+                    'balance': 'Balance kualitas & harga',
+                    'cost': 'Efisiensi biaya'
+                };
+                return priorities[priority] || 'Belum ditentukan';
+            }
+
+            formatPaymentPlan(plan) {
+                const plans = {
+                    'full': 'Lunas di awal',
+                    'installment_2': 'Cicilan 2x (50%-50%)',
+                    'installment_3': 'Cicilan 3x (40%-30%-30%)',
+                    'progress': 'Bertahap sesuai progress'
+                };
+                return plans[plan] || 'Belum ditentukan';
+            }
+
+            formatConsultationTime(time) {
+                const times = {
+                    'asap': 'Sesegera mungkin',
+                    'this_week': 'Minggu ini',
+                    'next_week': 'Minggu depan',
+                    'flexible': 'Fleksibel'
+                };
+                return times[time] || 'Belum ditentukan';
+            }
+
+            submitForm() {
+                const formData = new FormData(document.getElementById('rfqForm'));
+                const data = Object.fromEntries(formData);
+                
+                // Add uploaded files info
+                data.uploadedFiles = this.uploadedFiles.map(f => f.name);
+                
+                // Generate unique RFQ ID
+                const rfqId = 'RFQ-' + Date.now();
+                data.id = rfqId;
+                data.submittedAt = new Date().toISOString();
+                data.status = 'pending';
+
+                // Show loading
+                const submitBtn = document.getElementById('submitBtn');
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span class="spinner spinner-sm me-2"></span>Mengirim...';
+
+                // Simulate API call
+                setTimeout(() => {
+                    // Save to localStorage (demo purposes)
+                    const rfqs = StorageManager.getData('rfqs', []);
+                    rfqs.push(data);
+                    StorageManager.setData('rfqs', rfqs);
+
+                    // Clear draft
+                    localStorage.removeItem('daiku_rfq_draft');
+
+                    // Show success
+                    this.showSuccessMessage(rfqId);
+                }, 2000);
+            }
+
+            showSuccessMessage(rfqId) {
+                document.querySelector('.rfq-container').innerHTML = `
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8 text-center">
+                                <div class="success-message py-5">
+                                    <i class="fas fa-check-circle fa-5x text-success mb-4"></i>
+                                    <h2 class="mb-3">Permintaan Berhasil Dikirim!</h2>
+                                    <p class="lead mb-4">
+                                        Terima kasih atas kepercayaan Anda. Permintaan konsultasi dengan ID 
+                                        <strong>${rfqId}</strong> telah kami terima.
+                                    </p>
+                                    
+                                    <div class="next-steps bg-light p-4 rounded mb-4">
+                                        <h5><i class="fas fa-list-check me-2"></i>Langkah Selanjutnya:</h5>
+                                        <div class="row text-start">
+                                            <div class="col-md-6">
+                                                <div class="step-item mb-3">
+                                                    <i class="fas fa-phone text-primary me-2"></i>
+                                                    <strong>24 Jam:</strong> Tim kami akan menghubungi Anda
+                                                </div>
+                                                <div class="step-item mb-3">
+                                                    <i class="fas fa-comments text-primary me-2"></i>
+                                                    <strong>Konsultasi:</strong> Diskusi detail kebutuhan
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="step-item mb-3">
+                                                    <i class="fas fa-file-alt text-primary me-2"></i>
+                                                    <strong>Proposal:</strong> Penawaran & estimasi biaya
+                                                </div>
+                                                <div class="step-item mb-3">
+                                                    <i class="fas fa-handshake text-primary me-2"></i>
+                                                    <strong>Eksekusi:</strong> Mulai proyek setelah deal
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="contact-info mb-4">
+                                        <p><strong>Butuh informasi lebih lanjut?</strong></p>
+                                        <a href="https://wa.me/6281234567890" class="btn btn-success me-2" target="_blank">
+                                            <i class="fab fa-whatsapp me-2"></i>Chat WhatsApp
+                                        </a>
+                                        <a href="tel:+6281234567890" class="btn btn-outline-primary">
+                                            <i class="fas fa-phone me-2"></i>Telepon Langsung
+                                        </a>
+                                    </div>
+
+                                    <div class="action-buttons">
+                                        <a href="index.html" class="btn btn-primary me-2">
+                                            <i class="fas fa-home me-2"></i>Kembali ke Beranda
+                                        </a>
+                                        <a href="catalog.html" class="btn btn-outline-secondary">
+                                            <i class="fas fa-images me-2"></i>Lihat Portfolio
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            saveDraft() {
+                const formData = new FormData(document.getElementById('rfqForm'));
+                const data = Object.fromEntries(formData);
+                data.currentStep = this.currentStep;
+                
+                localStorage.setItem('daiku_rfq_draft', JSON.stringify(data));
+                DaikuApp.showToast('Draft Disimpan', 'Form Anda telah disimpan sebagai draft', 'success');
+            }
+
+            loadDraft() {
+                const draft = localStorage.getItem('daiku_rfq_draft');
+                if (draft) {
+                    try {
+                        const data = JSON.parse(draft);
+                        
+                        // Populate form fields
+                        Object.keys(data).forEach(key => {
+                            if (key === 'currentStep') {
+                                this.currentStep = data[key];
+                                return;
+                            }
+                            
+                            const field = document.querySelector(`[name="${key}"]`);
+                            if (field) {
+                                if (field.type === 'checkbox' || field.type === 'radio') {
+                                    field.checked = field.value === data[key];
+                                } else {
+                                    field.value = data[key];
+                                }
+                            }
+                        });
+                        
+                        // Handle multiple checkboxes (rooms)
+                        if (data['rooms[]']) {
+                            const rooms = Array.isArray(data['rooms[]']) ? data['rooms[]'] : [data['rooms[]']];
+                            rooms.forEach(room => {
+                                const checkbox = document.querySelector(`input[name="rooms[]"][value="${room}"]`);
+                                if (checkbox) checkbox.checked = true;
+                            });
+                        }
+                        
+                        DaikuApp.showToast('Draft Dimuat', 'Draft form sebelumnya telah dimuat', 'info');
+                    } catch (e) {
+                        console.warn('Failed to load draft:', e);
+                    }
+                }
+            }
+
+            autoSave() {
+                this.saveDraft();
+            }
+
+            preSelectDesign(designId) {
+                const designs = StorageManager.getData('designs', []);
+                const design = designs.find(d => d.id == designId);
+                
+                if (design) {
+                    // Pre-fill some fields based on design
+                    const styleField = document.querySelector('[name="designStyle"]');
+                    if (styleField && design.style) {
+                        styleField.value = design.style;
+                    }
+                    
+                    DaikuApp.showToast('Info', `Form telah disesuaikan untuk desain: ${design.title}`, 'info');
+                }
+            }
+
+            scrollToTop() {
+                document.querySelector('.rfq-container').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Initialize RFQ Manager
+        const rfqManager = new RFQManager();
+        document.addEventListener('DOMContentLoaded', function() {
+            rfqManager.init();
+        });
+    </script>
+
+    <style>
+        .progress-steps {
+            margin-bottom: 2rem;
+        }
+        
+        .step-item {
+            text-align: center;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+        
+        .step-item.active,
+        .step-item.completed {
+            opacity: 1;
+        }
+        
+        .step-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .step-item.active .step-icon {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .step-item.completed .step-icon {
+            background: var(--success-color);
+            color: white;
+        }
+        
+        .step-label {
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        .form-step {
+            display: none;
+        }
+        
+        .form-step.active {
+            display: block;
+        }
+        
+        .project-type-card .form-check-input {
+            position: absolute;
+            opacity: 0;
+        }
+        
+        .project-type-card .card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .project-type-card .form-check-input:checked + label .card {
+            border-color: var(--primary-color);
+            background-color: rgba(44, 62, 80, 0.05);
+        }
+        
+        .form-check-group {
+            display: grid;
+            gap: 0.5rem;
+        }
+        
+        .file-upload-label.drag-over {
+            border-color: var(--primary-color);
+            background-color: rgba(44, 62, 80, 0.05);
+        }
+        
+        .uploaded-file-item {
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .review-section {
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .review-section h5 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #dee2e6;
+        }
+        
+        .success-message .step-item {
+            opacity: 1;
+            text-align: left;
+        }
+        
+        .next-steps {
+            text-align: left;
+        }
+        
+        @media (max-width: 767.98px) {
+            .step-item {
+                margin-bottom: 1rem;
+            }
+            
+            .step-icon {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .step-label {
+                font-size: 0.75rem;
+            }
+            
+            .project-type-card {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</body>
+</html>

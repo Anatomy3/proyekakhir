@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login atau daftar akun Daiku Interior - Akses dashboard pribadi untuk mengelola proyek desain interior Anda.">
+    <title>Login & Register - Daiku Interior Pekanbaru</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-light">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <a href="index.html" class="navbar-brand">
+                    <img src="images/image.png" alt="Daiku Interior & Eksterior" height="24">
+                </a>
+                
+                <ul class="navbar-nav d-lg-flex">
+                    <li><a href="index.html" class="nav-link">Beranda</a></li>
+                    <li><a href="catalog.html" class="nav-link">Katalog</a></li>
+                    <li><a href="rfq-form.html" class="nav-link">Konsultasi</a></li>
+                    <li><a href="#" class="nav-link login-required" style="display: none;" onclick="DaikuApp.goToDashboard(); return false;">Pesanan Saya</a></li>
+                    <li class="guest-only"><a href="auth.html" class="nav-link active">Login</a></li>
+                    <li class="login-required dropdown" style="display: none;">
+                        <a href="#" class="nav-link dropdown-toggle user-profile">
+                            <img src="" alt="Profile" class="rounded-circle me-2" width="24" height="24">
+                            <span class="user-name"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="customer-only"><a href="#" class="dropdown-item" onclick="DaikuApp.goToDashboard(); return false;">Dashboard</a></li>
+                            <li class="admin-only" style="display: none;"><a href="admin-dashboard.html" class="dropdown-item">Admin Panel</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a href="#" class="dropdown-item" onclick="DaikuApp.logout()">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <button class="mobile-menu-toggle d-lg-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Auth Container -->
+    <div class="auth-container py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-xl-8">
+                    <div class="auth-wrapper">
+                        <div class="row shadow-lg rounded-lg overflow-hidden bg-white">
+                            <!-- Left Side - Welcome Message -->
+                            <div class="col-lg-6 d-none d-lg-block bg-primary text-white p-5">
+                                <div class="h-100 d-flex flex-column justify-content-center">
+                                    <div class="text-center">
+                                        <i class="fas fa-home fa-4x mb-4 opacity-75"></i>
+                                        <h2 class="mb-4">Selamat Datang di Daiku Interior</h2>
+                                        <p class="lead mb-4">
+                                            Bergabunglah dengan komunitas pemilik rumah yang telah mempercayakan 
+                                            proyek interior mereka kepada kami.
+                                        </p>
+                                        <div class="features-list text-start">
+                                            <div class="feature-item mb-3">
+                                                <i class="fas fa-check-circle me-3"></i>
+                                                Dashboard pribadi untuk tracking proyek
+                                            </div>
+                                            <div class="feature-item mb-3">
+                                                <i class="fas fa-check-circle me-3"></i>
+                                                Komunikasi langsung dengan desainer
+                                            </div>
+                                            <div class="feature-item mb-3">
+                                                <i class="fas fa-check-circle me-3"></i>
+                                                Akses portfolio eksklusif
+                                            </div>
+                                            <div class="feature-item mb-3">
+                                                <i class="fas fa-check-circle me-3"></i>
+                                                Riwayat transaksi dan pembayaran
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right Side - Auth Forms -->
+                            <div class="col-lg-6 p-5">
+                                <!-- Tab Navigation -->
+                                <ul class="nav nav-tabs nav-fill mb-4" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="login-tab" href="#login" 
+                                           role="tab" aria-controls="login" aria-selected="true">
+                                            <i class="fas fa-sign-in-alt me-2"></i>Login
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="register-tab" href="#register" 
+                                           role="tab" aria-controls="register" aria-selected="false">
+                                            <i class="fas fa-user-plus me-2"></i>Register
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <!-- Tab Content -->
+                                <div class="tab-content">
+                                    <!-- Login Form -->
+                                    <div class="tab-pane fade show active" id="login" role="tabpanel">
+                                        <h3 class="text-center mb-4">Masuk ke Akun Anda</h3>
+                                        
+                                        <form id="loginForm" class="ajax-form">
+                                            <div class="form-group">
+                                                <label class="form-label">Email</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">
+                                                        <i class="fas fa-envelope"></i>
+                                                    </span>
+                                                    <input type="email" class="form-control" name="email" 
+                                                           placeholder="name@example.com" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="form-label">Password</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">
+                                                        <i class="fas fa-lock"></i>
+                                                    </span>
+                                                    <input type="password" class="form-control" name="password" 
+                                                           placeholder="Masukkan password" required>
+                                                    <button class="btn btn-outline-secondary" type="button" 
+                                                            onclick="togglePassword(this)">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="rememberMe">
+                                                    <label class="form-check-label" for="rememberMe">
+                                                        Ingat saya
+                                                    </label>
+                                                </div>
+                                                <a href="#" class="text-decoration-none" onclick="showForgotPassword()">
+                                                    Lupa password?
+                                                </a>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-primary btn-lg w-100 mb-3">
+                                                <i class="fas fa-sign-in-alt me-2"></i>Masuk
+                                            </button>
+
+                                            <!-- Quick Login Options -->
+                                            <div class="quick-login mb-3">
+                                                <div class="text-center mb-3">
+                                                    <small class="text-muted">Atau login sebagai demo:</small>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <button type="button" class="btn btn-outline-secondary btn-sm w-100" 
+                                                                onclick="quickLogin('customer')">
+                                                            <i class="fas fa-user"></i><br>
+                                                            <small>Customer</small>
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <button type="button" class="btn btn-outline-secondary btn-sm w-100" 
+                                                                onclick="quickLogin('admin')">
+                                                            <i class="fas fa-user-shield"></i><br>
+                                                            <small>Admin</small>
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <button type="button" class="btn btn-outline-secondary btn-sm w-100" 
+                                                                onclick="quickLogin('designer')">
+                                                            <i class="fas fa-palette"></i><br>
+                                                            <small>Designer</small>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                        <!-- Social Login -->
+                                        <div class="social-login">
+                                            <div class="text-center mb-3">
+                                                <small class="text-muted">Atau masuk dengan</small>
+                                            </div>
+                                            <div class="d-grid gap-2">
+                                                <button class="btn btn-outline-danger" onclick="socialLogin('google')">
+                                                    <i class="fab fa-google me-2"></i>Google
+                                                </button>
+                                                <button class="btn btn-outline-primary" onclick="socialLogin('facebook')">
+                                                    <i class="fab fa-facebook-f me-2"></i>Facebook
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Register Form -->
+                                    <div class="tab-pane fade" id="register" role="tabpanel">
+                                        <h3 class="text-center mb-4">Buat Akun Baru</h3>
+                                        
+                                        <form id="registerForm" class="ajax-form">
+                                            <div class="form-group">
+                                                <label class="form-label">Nama Lengkap</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">
+                                                        <i class="fas fa-user"></i>
+                                                    </span>
+                                                    <input type="text" class="form-control" name="name" 
+                                                           placeholder="Masukkan nama lengkap" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="form-label">Email</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">
+                                                        <i class="fas fa-envelope"></i>
+                                                    </span>
+                                                    <input type="email" class="form-control" name="email" 
+                                                           placeholder="name@example.com" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="form-label">Nomor Telepon</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">
+                                                        <i class="fas fa-phone"></i>
+                                                    </span>
+                                                    <input type="tel" class="form-control" name="phone" 
+                                                           placeholder="08123456789" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="form-label">Password</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">
+                                                        <i class="fas fa-lock"></i>
+                                                    </span>
+                                                    <input type="password" class="form-control" name="password" 
+                                                           placeholder="Minimal 8 karakter" required minlength="8">
+                                                    <button class="btn btn-outline-secondary" type="button" 
+                                                            onclick="togglePassword(this)">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="form-text">
+                                                    Password harus minimal 8 karakter
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="form-label">Konfirmasi Password</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">
+                                                        <i class="fas fa-lock"></i>
+                                                    </span>
+                                                    <input type="password" class="form-control" name="confirm_password" 
+                                                           placeholder="Ulangi password" required>
+                                                    <button class="btn btn-outline-secondary" type="button" 
+                                                            onclick="togglePassword(this)">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="form-label">Role</label>
+                                                <select class="form-select" name="role" required>
+                                                    <option value="">Pilih role...</option>
+                                                    <option value="customer">Customer - Klien yang ingin menggunakan jasa</option>
+                                                    <option value="designer">Designer - Desainer interior</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-check mb-4">
+                                                <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+                                                <label class="form-check-label" for="agreeTerms">
+                                                    Saya setuju dengan 
+                                                    <a href="#" class="text-decoration-none">Syarat & Ketentuan</a> 
+                                                    dan 
+                                                    <a href="#" class="text-decoration-none">Kebijakan Privasi</a>
+                                                </label>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-primary btn-lg w-100">
+                                                <i class="fas fa-user-plus me-2"></i>Daftar Sekarang
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Reset Password</h5>
+                    <button type="button" class="btn-close" data-modal-close></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-muted mb-4">
+                        Masukkan email Anda dan kami akan mengirimkan link untuk reset password.
+                    </p>
+                    <form id="forgotPasswordForm" class="ajax-form">
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" name="email" 
+                                   placeholder="name@example.com" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-modal-close>Batal</button>
+                    <button type="submit" form="forgotPasswordForm" class="btn btn-primary">
+                        Kirim Link Reset
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Auth page functionality
+        class AuthManager {
+            constructor() {
+                this.currentForm = 'login';
+            }
+
+            init() {
+                this.bindEvents();
+                this.setupFormValidation();
+            }
+
+            bindEvents() {
+                // Handle login form
+                document.getElementById('loginForm').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.handleLogin(e.target);
+                });
+
+                // Handle register form
+                document.getElementById('registerForm').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.handleRegister(e.target);
+                });
+
+                // Handle forgot password form
+                document.getElementById('forgotPasswordForm').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.handleForgotPassword(e.target);
+                });
+
+                // Form validation on input
+                document.querySelectorAll('input').forEach(input => {
+                    input.addEventListener('blur', () => this.validateField(input));
+                    input.addEventListener('input', () => this.clearFieldError(input));
+                });
+
+                // Password confirmation validation
+                const confirmPassword = document.querySelector('input[name="confirm_password"]');
+                const password = document.querySelector('#register input[name="password"]');
+                
+                if (confirmPassword && password) {
+                    confirmPassword.addEventListener('input', () => {
+                        this.validatePasswordMatch(password, confirmPassword);
+                    });
+                }
+            }
+
+            setupFormValidation() {
+                // Real-time validation messages
+                const forms = document.querySelectorAll('.ajax-form');
+                forms.forEach(form => {
+                    form.addEventListener('input', (e) => {
+                        this.validateField(e.target);
+                    });
+                });
+            }
+
+            handleLogin(form) {
+                const formData = new FormData(form);
+                const email = formData.get('email');
+                const password = formData.get('password');
+
+                // Simple validation
+                if (!this.validateEmail(email)) {
+                    this.showFieldError(form.querySelector('[name="email"]'), 'Email tidak valid');
+                    return;
+                }
+
+                if (password.length < 6) {
+                    this.showFieldError(form.querySelector('[name="password"]'), 'Password minimal 6 karakter');
+                    return;
+                }
+
+                // Show loading
+                this.showLoading(form);
+
+                // Simulate API call
+                setTimeout(() => {
+                    this.hideLoading(form);
+                    
+                    // For demo purposes, login with any valid email/password
+                    const users = StorageManager.getData('users', []);
+                    let user = users.find(u => u.email === email);
+                    
+                    if (!user) {
+                        // Create demo user
+                        user = {
+                            id: 'DEMO-' + Date.now(),
+                            name: email.split('@')[0],
+                            email: email,
+                            role: 'customer',
+                            avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b192?w=100',
+                            status: 'active'
+                        };
+                    }
+
+                    this.loginSuccess(user);
+                }, 1500);
+            }
+
+            handleRegister(form) {
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData);
+
+                // Validation
+                if (!this.validateRegisterForm(data, form)) return;
+
+                // Show loading
+                this.showLoading(form);
+
+                // Simulate API call
+                setTimeout(() => {
+                    this.hideLoading(form);
+                    
+                    // Create new user
+                    const newUser = {
+                        id: 'USER-' + Date.now(),
+                        name: data.name,
+                        email: data.email,
+                        phone: data.phone,
+                        role: data.role,
+                        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b192?w=100',
+                        joinDate: new Date().toISOString().split('T')[0],
+                        status: 'active'
+                    };
+
+                    // Save user
+                    const users = StorageManager.getData('users', []);
+                    users.push(newUser);
+                    StorageManager.setData('users', users);
+
+                    this.loginSuccess(newUser);
+                }, 2000);
+            }
+
+            handleForgotPassword(form) {
+                const formData = new FormData(form);
+                const email = formData.get('email');
+
+                if (!this.validateEmail(email)) {
+                    this.showFieldError(form.querySelector('[name="email"]'), 'Email tidak valid');
+                    return;
+                }
+
+                // Show loading
+                this.showLoading(form);
+
+                // Simulate API call
+                setTimeout(() => {
+                    this.hideLoading(form);
+                    DaikuApp.hideModal(document.getElementById('forgotPasswordModal'));
+                    DaikuApp.showToast('Email Terkirim', 'Link reset password telah dikirim ke email Anda', 'success');
+                    form.reset();
+                }, 1500);
+            }
+
+            validateRegisterForm(data, form) {
+                let isValid = true;
+
+                // Name validation
+                if (data.name.length < 2) {
+                    this.showFieldError(form.querySelector('[name="name"]'), 'Nama minimal 2 karakter');
+                    isValid = false;
+                }
+
+                // Email validation
+                if (!this.validateEmail(data.email)) {
+                    this.showFieldError(form.querySelector('[name="email"]'), 'Email tidak valid');
+                    isValid = false;
+                }
+
+                // Phone validation
+                if (!this.validatePhone(data.phone)) {
+                    this.showFieldError(form.querySelector('[name="phone"]'), 'Nomor telepon tidak valid');
+                    isValid = false;
+                }
+
+                // Password validation
+                if (data.password.length < 8) {
+                    this.showFieldError(form.querySelector('[name="password"]'), 'Password minimal 8 karakter');
+                    isValid = false;
+                }
+
+                // Password confirmation
+                if (data.password !== data.confirm_password) {
+                    this.showFieldError(form.querySelector('[name="confirm_password"]'), 'Password tidak sama');
+                    isValid = false;
+                }
+
+                // Role validation
+                if (!data.role) {
+                    this.showFieldError(form.querySelector('[name="role"]'), 'Pilih role Anda');
+                    isValid = false;
+                }
+
+                return isValid;
+            }
+
+            validateField(field) {
+                const value = field.value.trim();
+                const name = field.getAttribute('name');
+
+                this.clearFieldError(field);
+
+                switch (name) {
+                    case 'email':
+                        if (value && !this.validateEmail(value)) {
+                            this.showFieldError(field, 'Email tidak valid');
+                            return false;
+                        }
+                        break;
+                    case 'phone':
+                        if (value && !this.validatePhone(value)) {
+                            this.showFieldError(field, 'Nomor telepon tidak valid');
+                            return false;
+                        }
+                        break;
+                    case 'password':
+                        if (value && value.length < 8) {
+                            this.showFieldError(field, 'Password minimal 8 karakter');
+                            return false;
+                        }
+                        break;
+                }
+
+                return true;
+            }
+
+            validatePasswordMatch(passwordField, confirmField) {
+                if (confirmField.value && passwordField.value !== confirmField.value) {
+                    this.showFieldError(confirmField, 'Password tidak sama');
+                    return false;
+                } else {
+                    this.clearFieldError(confirmField);
+                    return true;
+                }
+            }
+
+            validateEmail(email) {
+                return DaikuApp.validateEmail(email);
+            }
+
+            validatePhone(phone) {
+                return DaikuApp.validatePhone(phone);
+            }
+
+            showFieldError(field, message) {
+                this.clearFieldError(field);
+                
+                field.classList.add('is-invalid');
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'invalid-feedback';
+                errorDiv.textContent = message;
+                field.parentNode.appendChild(errorDiv);
+            }
+
+            clearFieldError(field) {
+                field.classList.remove('is-invalid');
+                const errorFeedback = field.parentNode.querySelector('.invalid-feedback');
+                if (errorFeedback) {
+                    errorFeedback.remove();
+                }
+            }
+
+            showLoading(form) {
+                const submitBtn = form.querySelector('[type="submit"]');
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span class="spinner spinner-sm me-2"></span>Processing...';
+            }
+
+            hideLoading(form) {
+                const submitBtn = form.querySelector('[type="submit"]');
+                submitBtn.disabled = false;
+                
+                // Restore original text
+                if (form.id === 'loginForm') {
+                    submitBtn.innerHTML = '<i class="fas fa-sign-in-alt me-2"></i>Masuk';
+                } else if (form.id === 'registerForm') {
+                    submitBtn.innerHTML = '<i class="fas fa-user-plus me-2"></i>Daftar Sekarang';
+                } else {
+                    submitBtn.innerHTML = 'Kirim Link Reset';
+                }
+            }
+
+            loginSuccess(user) {
+                // Save user to localStorage
+                localStorage.setItem('daiku_currentUser', JSON.stringify(user));
+                
+                // Show success message
+                DaikuApp.showToast('Login Berhasil', `Selamat datang, ${user.name}!`, 'success');
+                
+                // Redirect based on role using smart routing
+                setTimeout(() => {
+                    DaikuApp.goToDashboard();
+                }, 1500);
+            }
+        }
+
+        // Global functions for UI interactions
+        function togglePassword(button) {
+            const input = button.parentNode.querySelector('input');
+            const icon = button.querySelector('i');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.className = 'fas fa-eye-slash';
+            } else {
+                input.type = 'password';
+                icon.className = 'fas fa-eye';
+            }
+        }
+
+        function showForgotPassword() {
+            DaikuApp.showModal('forgotPasswordModal');
+        }
+
+        function quickLogin(role) {
+            const users = StorageManager.getData('users', []);
+            let user = users.find(u => u.role === role);
+            
+            if (!user) {
+                // Create demo user
+                const demos = {
+                    customer: {
+                        id: 'CUST-001',
+                        name: 'Sari Wulandari',
+                        email: 'sari.wulan@email.com',
+                        role: 'customer',
+                        avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b192?w=100'
+                    },
+                    admin: {
+                        id: 'ADM-001',
+                        name: 'Diana Kusuma',
+                        email: 'diana.kusuma@daikuinterior.com',
+                        role: 'admin',
+                        avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100'
+                    },
+                    designer: {
+                        id: 'DES-001',
+                        name: 'Andi Pratama',
+                        email: 'andi.pratama@daikuinterior.com',
+                        role: 'designer',
+                        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100'
+                    }
+                };
+                user = demos[role];
+            }
+            
+            authManager.loginSuccess(user);
+        }
+
+        function socialLogin(provider) {
+            DaikuApp.showToast('Info', `Login dengan ${provider} akan segera tersedia`, 'info');
+        }
+
+        // Initialize auth manager
+        const authManager = new AuthManager();
+        document.addEventListener('DOMContentLoaded', function() {
+            authManager.init();
+            
+            // Check if user is already logged in
+            const currentUser = localStorage.getItem('daiku_currentUser');
+            if (currentUser) {
+                const user = JSON.parse(currentUser);
+                DaikuApp.showToast('Info', 'Anda sudah login, mengalihkan...', 'info');
+                setTimeout(() => {
+                    DaikuApp.goToDashboard();
+                }, 1000);
+            }
+        });
+    </script>
+
+    <style>
+        .auth-container {
+            min-height: calc(100vh - 80px);
+        }
+        
+        .auth-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .features-list .feature-item {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .quick-login .btn {
+            font-size: 0.75rem;
+            padding: 0.5rem 0.25rem;
+        }
+        
+        .social-login .btn {
+            border-width: 1px;
+        }
+        
+        .form-control.is-invalid {
+            border-color: #dc3545;
+        }
+        
+        .invalid-feedback {
+            display: block;
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 0.875rem;
+            color: #dc3545;
+        }
+        
+        .input-group .btn {
+            border-left: none;
+        }
+        
+        .nav-tabs .nav-link {
+            border: none;
+            border-bottom: 2px solid transparent;
+            background: none;
+            color: var(--neutral-gray);
+        }
+        
+        .nav-tabs .nav-link.active {
+            border-bottom-color: var(--primary-color);
+            color: var(--primary-color);
+            background: none;
+        }
+        
+        @media (max-width: 991.98px) {
+            .auth-container {
+                padding: 2rem 0;
+            }
+            
+            .auth-wrapper .col-lg-6 {
+                padding: 2rem !important;
+            }
+        }
+        
+        @media (max-width: 767.98px) {
+            .quick-login .col-4 {
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</body>
+</html>

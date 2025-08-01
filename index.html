@@ -3,78 +3,405 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daiku Interior - Wujudkan Rumah Impian Anda</title>
-    <link rel="stylesheet" href="css/style.css">
+    <meta name="description" content="Daiku Interior & Eksterior Pekanbaru - Jasa desain interior dan eksterior profesional. Wujudkan hunian impian dengan desain modern, minimalis, dan fungsional sejak 2018.">
+    <meta name="keywords" content="interior design, eksterior design, desain interior, desain eksterior, Pekanbaru, renovasi rumah, desain ruang tamu, kitchen set, konsultasi desain">
+    <title>Daiku Interior & Eksterior - Jasa Desain Interior dan Eksterior Profesional Pekanbaru</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <div class="nav-brand">
-                <h2>🏠 DAIKU INTERIOR</h2>
-            </div>
-            <div class="nav-menu">
-                <a href="index.html" class="nav-link active">Beranda</a>
-                <a href="katalog.html" class="nav-link">Katalog</a>
-                <a href="pemesanan.html" class="nav-link">Pemesanan</a>
-                <a href="status.html" class="nav-link">Status Proyek</a>
-                <a href="chat.html" class="nav-link">Chat</a>
-                <a href="login.html" class="nav-link">Login</a>
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <a href="index.html" class="navbar-brand">
+                    <img src="images/image.png" alt="Daiku Interior & Eksterior" height="24">
+                </a>
+                
+                <ul class="navbar-nav d-lg-flex">
+                    <li><a href="index.html" class="nav-link active">Beranda</a></li>
+                    <li><a href="catalog.html" class="nav-link">Katalog</a></li>
+                    <li><a href="rfq-form.html" class="nav-link">Konsultasi</a></li>
+                    <li><a href="#" class="nav-link login-required" style="display: none;" onclick="DaikuApp.goToDashboard(); return false;">Pesanan Saya</a></li>
+                    <li class="guest-only"><a href="auth.html" class="nav-link">Login</a></li>
+                    <li class="login-required dropdown" style="display: none;">
+                        <a href="#" class="nav-link dropdown-toggle user-profile">
+                            <img src="" alt="Profile" class="rounded-circle me-2" width="24" height="24">
+                            <span class="user-name"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="customer-only"><a href="#" class="dropdown-item" onclick="DaikuApp.goToDashboard(); return false;">Dashboard</a></li>
+                            <li class="admin-only" style="display: none;"><a href="admin-dashboard.html" class="dropdown-item">Admin Panel</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a href="#" class="dropdown-item" onclick="DaikuApp.logout()">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <button class="mobile-menu-toggle d-lg-none">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero bg-light py-5">
         <div class="container">
-            <div class="hero-content">
-                <h1>Wujudkan Rumah Impian Anda</h1>
-                <p>Daiku Interior adalah solusi terpercaya untuk desain interior dan eksterior rumah yang modern, fungsional, dan sesuai dengan kepribadian Anda.</p>
-                <div class="hero-buttons">
-                    <a href="katalog.html" class="btn btn-primary">Lihat Katalog</a>
-                    <a href="pemesanan.html" class="btn btn-outline">Konsultasi Gratis</a>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 font-weight-bold mb-4">
+                        Wujudkan Hunian Impian Anda Bersama Kami
+                    </h1>
+                    <p class="lead mb-4">
+                        Daiku Interior & Eksterior Pekanbaru - Sejak 2018, kami hadir sebagai partner terpercaya untuk mentransformasi hunian, perkantoran, dan ruang komersial Anda dengan desain modern, minimalis, dan fungsional yang sesuai dengan kebutuhan dan preferensi Anda.
+                    </p>
+                    <div class="d-flex flex-column flex-md-row gap-3">
+                        <a href="catalog.html" class="btn btn-primary btn-lg">
+                            <i class="fas fa-eye me-2"></i>Lihat Portfolio
+                        </a>
+                        <a href="rfq-form.html" class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-calendar-alt me-2"></i>Konsultasi Sekarang
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="hero-image">
-                <div class="image-placeholder">🏠 Interior Design Preview</div>
+                <div class="col-lg-6 mt-4 mt-lg-0">
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop" 
+                             alt="Modern Living Room Design" class="img-fluid rounded-lg shadow-lg">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Featured Products -->
-    <section class="featured-products">
+    <!-- Featured Designs -->
+    <section class="featured-designs py-5">
         <div class="container">
-            <h2>Desain Terpopuler</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <div class="product-image">Ruang Tamu Modern</div>
-                    <h3>Modern Minimalis</h3>
-                    <p class="price">Rp 15.000.000</p>
-                    <a href="pemesanan.html" class="btn btn-primary">Pesan Sekarang</a>
+            <div class="text-center mb-5">
+                <h2>Desain Unggulan</h2>
+                <p class="text-muted">Lihat beberapa karya terbaik kami yang telah mempercantik hunian klien</p>
+            </div>
+            
+            <div id="featured-carousel" class="row" data-category="featured">
+                <!-- Featured designs will be loaded dynamically -->
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="catalog.html" class="btn btn-outline-primary">
+                    Lihat Semua Desain <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2>Layanan Kami</h2>
+                <p class="text-muted">Solusi lengkap untuk kebutuhan desain interior Anda</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <div class="service-icon mb-3">
+                                <i class="fas fa-home fa-3x text-primary"></i>
+                            </div>
+                            <h5 class="card-title">Desain Interior</h5>
+                            <p class="card-text">
+                                Layanan desain interior lengkap untuk hunian, perkantoran, dan ruang komersial. 
+                                Mulai dari konsultasi, gambar teknik, visualisasi 3D, hingga implementasi desain.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="product-card">
-                    <div class="product-image">Kamar Tidur Klasik</div>
-                    <h3>Klasik Mewah</h3>
-                    <p class="price">Rp 12.000.000</p>
-                    <a href="pemesanan.html" class="btn btn-primary">Pesan Sekarang</a>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <div class="service-icon mb-3">
+                                <i class="fas fa-building fa-3x text-secondary"></i>
+                            </div>
+                            <h5 class="card-title">Desain Eksterior</h5>
+                            <p class="card-text">
+                                Desain eksterior yang memukau untuk fasad rumah, taman, dan area outdoor lainnya. 
+                                Menciptakan harmoni antara estetika dan fungsionalitas ruang luar.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="product-card">
-                    <div class="product-image">Dapur Modern</div>
-                    <h3>Kitchen Set</h3>
-                    <p class="price">Rp 18.000.000</p>
-                    <a href="pemesanan.html" class="btn btn-primary">Pesan Sekarang</a>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <div class="service-icon mb-3">
+                                <i class="fas fa-comments fa-3x text-accent"></i>
+                            </div>
+                            <h5 class="card-title">Konsultasi & RAB</h5>
+                            <p class="card-text">
+                                Konsultasi komprehensif dengan tim desainer profesional dan penyusunan 
+                                Rancangan Anggaran Biaya (RAB) yang detail dan transparan.
+                            </p>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="statistics py-5">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-item">
+                        <div class="stat-number text-primary font-weight-bold" data-count="150">0</div>
+                        <div class="stat-label text-muted">Proyek Selesai</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-item">
+                        <div class="stat-number text-secondary font-weight-bold" data-count="89">0</div>
+                        <div class="stat-label text-muted">Klien Puas</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-item">
+                        <div class="stat-number text-accent font-weight-bold" data-count="5">0</div>
+                        <div class="stat-label text-muted">Tahun Pengalaman</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-item">
+                        <div class="stat-number text-success font-weight-bold" data-count="23">0</div>
+                        <div class="stat-label text-muted">Proyek Berjalan</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2>Testimoni Klien</h2>
+                <p class="text-muted">Apa kata klien tentang layanan Daiku Interior</p>
+            </div>
+            
+            <div id="testimonials-container" class="row">
+                <!-- Testimonials will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta py-5 bg-primary text-white">
+        <div class="container text-center">
+            <h2 class="mb-4">Siap Mewujudkan Ruang Impian Anda?</h2>
+            <p class="lead mb-4">
+                Konsultasikan proyek interior Anda dengan tim ahli kami. 
+                Dapatkan penawaran terbaik dan realisasikan hunian impian keluarga.
+            </p>
+            <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+                <a href="rfq-form.html" class="btn btn-accent btn-lg">
+                    <i class="fas fa-phone me-2"></i>Hubungi Kami Sekarang
+                </a>
+                <a href="https://wa.me/6281234567890" class="btn btn-outline-light btn-lg" target="_blank">
+                    <i class="fab fa-whatsapp me-2"></i>Chat WhatsApp
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="bg-dark text-white py-5">
         <div class="container">
-            <p>&copy; 2025 Daiku Interior. All rights reserved.</p>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5 class="mb-3">
+                        <i class="fas fa-home me-2"></i>Daiku Interior
+                    </h5>
+                    <p class="text-muted">
+                        Jasa desain interior profesional di Pekanbaru. 
+                        Menghadirkan solusi desain terbaik untuk hunian dan bisnis Anda.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="mb-3">Menu</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-muted">Beranda</a></li>
+                        <li><a href="catalog.html" class="text-muted">Katalog</a></li>
+                        <li><a href="#services" class="text-muted">Layanan</a></li>
+                        <li><a href="#testimonials" class="text-muted">Testimoni</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h6 class="mb-3">Layanan</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted">Desain Interior Rumah</a></li>
+                        <li><a href="#" class="text-muted">Desain Interior Kantor</a></li>
+                        <li><a href="#" class="text-muted">Kitchen Set</a></li>
+                        <li><a href="#" class="text-muted">Konsultasi Desain</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h6 class="mb-3">Kontak</h6>
+                    <div class="contact-info">
+                        <div class="mb-2">
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            Jl. Sudirman No. 123, Pekanbaru, Riau
+                        </div>
+                        <div class="mb-2">
+                            <i class="fas fa-phone me-2"></i>
+                            <a href="tel:+6281234567890" class="text-muted">+62 812-3456-7890</a>
+                        </div>
+                        <div class="mb-2">
+                            <i class="fas fa-envelope me-2"></i>
+                            <a href="mailto:info@daikuinterior.com" class="text-muted">info@daikuinterior.com</a>
+                        </div>
+                        <div>
+                            <i class="fas fa-clock me-2"></i>
+                            Senin - Sabtu: 09:00 - 18:00
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-muted">
+                        &copy; 2024 Daiku Interior Pekanbaru. All rights reserved.
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <small class="text-muted">
+                        Powered by Daiku Interior Team
+                    </small>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <!-- JavaScript -->
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Page-specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            loadFeaturedDesigns();
+            loadTestimonials();
+            animateStats();
+        });
+
+        // Load featured designs
+        function loadFeaturedDesigns() {
+            const designs = StorageManager.getData('designs', []).slice(0, 3);
+            const container = document.getElementById('featured-carousel');
+            
+            container.innerHTML = designs.map(design => `
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <img src="${design.image}" class="card-img-top" alt="${design.title}">
+                        <div class="card-body">
+                            <h5 class="card-title">${design.title}</h5>
+                            <p class="card-text">${design.description}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge badge-primary">${design.category}</span>
+                                <span class="text-accent font-weight-bold">${Utils.formatCurrency(design.price)}</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="design-detail.html?id=${design.id}" class="btn btn-outline-primary btn-sm">
+                                Lihat Detail
+                            </a>
+                            <a href="rfq-form.html?design=${design.id}" class="btn btn-primary btn-sm">
+                                Pesan Sekarang
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Load testimonials
+        function loadTestimonials() {
+            const testimonials = StorageManager.getData('testimonials', []);
+            const container = document.getElementById('testimonials-container');
+            
+            container.innerHTML = testimonials.map(testimonial => `
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <img src="${testimonial.avatar}" 
+                                 alt="${testimonial.name}" 
+                                 class="rounded-circle mb-3" 
+                                 width="80" height="80">
+                            <div class="rating mb-2">
+                                ${'<i class="fas fa-star text-warning"></i>'.repeat(testimonial.rating)}
+                            </div>
+                            <p class="card-text">"${testimonial.comment}"</p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <h6 class="mb-1">${testimonial.name}</h6>
+                            <small class="text-muted">${testimonial.project} - ${testimonial.location}</small>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Animate statistics counters
+        function animateStats() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = parseInt(entry.target.getAttribute('data-count'));
+                        let current = 0;
+                        const increment = target / 100;
+                        
+                        const counter = setInterval(() => {
+                            current += increment;
+                            if (current >= target) {
+                                entry.target.textContent = target;
+                                clearInterval(counter);
+                            } else {
+                                entry.target.textContent = Math.floor(current);
+                            }
+                        }, 20);
+                        
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            statNumbers.forEach(stat => observer.observe(stat));
+        }
+    </script>
 </body>
 </html>
